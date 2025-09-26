@@ -3,25 +3,45 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev:all": "pnpm run codegen && pnpm dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "codegen": "dotenv -e .env.local -- graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@apollo/client": "^4.0.5",
+    "@hello-pangea/dnd": "^18.0.1",
+    "@nhost/apollo": "^8.0.9",
+    "@nhost/nextjs": "^2.3.1",
+    "@nhost/nhost-js": "3.3.1",
+    "@nhost/react": "3.11.2",
+    "@nhost/react-apollo": "17.0.2",
+    "clsx": "^2.1.1",
+    "graphql": "^16.11.0",
+    "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.3"
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@graphql-codegen/cli": "^6.0.0",
+    "@graphql-codegen/typescript": "^5.0.0",
+    "@graphql-codegen/typescript-operations": "^5.0.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "dotenv": "^17.2.2",
+    "dotenv-cli": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
-    "@eslint/eslintrc": "^3"
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

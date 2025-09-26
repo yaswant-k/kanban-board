@@ -1,0 +1,98 @@
+query GetBoards {
+  boards(order_by: { position: asc }) {
+    id
+    name
+    position
+    columns(order_by: { position: asc }) {
+      id
+      name
+      position
+      cards(order_by: { position: asc }) {
+        id
+        title
+        description
+        position
+      }
+    }
+  }
+}
+
+query GetBoardById($id: uuid!) {
+  boards_by_pk(id: $id) {
+    id
+    name
+    columns(order_by: { position: asc }) {
+      id
+      name
+      position
+      cards(order_by: { position: asc }) {
+        id
+        title
+        description
+        position
+      }
+    }
+  }
+}
+
+mutation InsertColumnToBoard($boardId: uuid!, $name: String!, $position: numeric!) {
+  insert_columns_one(object: {
+    board_id: $boardId,
+    name: $name,
+    position: $position
+  }) {
+    id
+    name
+    position
+  }
+}
+
+mutation InsertCardToColumn(
+  $columnId: uuid!
+  $title: String!
+  $description: String!
+  $position: numeric!
+) {
+  insert_cards_one(object: {
+    column_id: $columnId,
+    title: $title,
+    description: $description,
+    position: $position
+  }) {
+    id
+    title
+    description
+    position
+  }
+}
+
+mutation UpdateColumnPosition($id: uuid!, $position: numeric!) {
+  update_columns_by_pk(pk_columns: { id: $id }, _set: { position: $position }) {
+    id
+    position
+  }
+}
+
+mutation UpdateCardPosition($id: uuid!, $position: numeric!) {
+  update_cards_by_pk(pk_columns: { id: $id }, _set: { position: $position }) {
+    id
+    position
+  }
+}
+subscription OnBoardUpdated($id: uuid!) {
+  boards_by_pk(id: $id) {
+    id
+    name
+    columns(order_by: { position: asc }) {
+      id
+      name
+      position
+      cards(order_by: { position: asc }) {
+        id
+        title
+        description
+        position
+      }
+    }
+  }
+}
