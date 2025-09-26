@@ -1,4 +1,4 @@
-// src/lib/nhost.ts
+// ✅ src/lib/nhost.ts
 'use client'
 
 import { createNhostClient } from '@nhost/nhost-js'
