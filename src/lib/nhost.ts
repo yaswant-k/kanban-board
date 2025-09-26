@@ -3,6 +3,6 @@
 import { createClient } from '@nhost/nhost-js'
 
 export const nhost = createClient({
-  // ✅ This is the correct config key in v4+
-  backendUrl: process.env.NEXT_PUBLIC_NHOST_BACKEND_URL!,
+  subdomain: 'vndputnsmkcqzjahwihz',       // ← from your backend URL
+  region: 'us-west-2'                      // ← also from your backend URL
 })
